@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Для неё ❤️</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background: linear-gradient(#0b0f1a,#1b2735);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:white;
+  font-family: Arial;
+  text-align:center;
+}
+
+/* твой текст */
+.text{
+  font-size:40px;
+  animation: glow 2s infinite alternate;
+  display:none; /* скрываем текст до нажатия кнопки */
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 10px white; }
+  to{ text-shadow:0 0 30px pink; }
+}
+
+/* снег */
+.snow{
+  position:fixed;
+  top:-10px;
+  color:white;
+  animation: fall linear infinite;
+}
+
+@keyframes fall{
+  to{ transform: translateY(110vh); }
+}
+
+/* кнопка */
+button{
+  padding: 15px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #ff6b81;
+  color: white;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Кнопка -->
+<button id="openLetter">Открыть письмо 💌</button>
+
+<!-- Скрытый текст -->
+<div class="text" id="letter">
+  Котеночекк, я тебя оч сильно обожаю, люблю, и дорожу всем сердцем. Я не знаю, делаю это первый раз в жизни, и оч надеюсь что тебе понравится. Просто знай, что ты у меня самая красивенькая, прекраснейшая, миленькая девочка, прям утютю. Я что-то в последнее время стал много думать о будущем с тобой, у меня очень хорошие сценарии, я хочу с тобой все время быть, с тобой попробовать все что новое. Я вообще ненавижу слово расставания. Фу, не хочу. Я очень сильно надеюсь, что ты поступишь, туда кцда тебе надо, ты справишься, я верю в тебя, мое солнышко. И конечно же надеюсь на наше совместное будущее! Прошу, говори мне если устанешь от меня, не надо отвечать холодно/игнорить, я не хочу видеть холода от тебя, моя девочка, молю.
+  Спасибо что ты есть ❤️<br>
+  Ты самая лучшая!
+</div>
+
+<!-- Музыка -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Снежинки
+function snow(){
+  const s=document.createElement("div");
+  s.innerHTML="❄";
+  s.className="snow";
+  s.style.left=Math.random()*100+"vw";
+  s.style.fontSize=(10+Math.random()*20)+"px";
+  s.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),10000);
+}
+setInterval(snow,100);
+
+// Кнопка открывает письмо
+document.getElementById('openLetter').addEventListener('click', () => {
+  document.getElementById('letter').style.display = 'block';
+  document.getElementById('openLetter').style.display = 'none'; // убираем кнопку после нажатия
+});
+</script>
+
+</body>
+</html>
